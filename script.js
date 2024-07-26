@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         valorFinanciadoInput.value = '';
         taxaJurosInput.value = '';
         numPrestacoesInput.value = '';
-        document.getElementById('prestacao').innerText = 'Valor da Prestação: R$ 0,00';
+        document.getElementById('prestacao').innerText = 'Valor da Prestação:\n R$ 0,00';
     });
   });
   
