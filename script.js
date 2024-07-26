@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
   
-    const taxaMensal = taxaJuros / 12;
+    const taxaMensal = taxaJuros;
     const prestacao = (valorFinanciado * taxaMensal) / (1 - Math.pow(1 + taxaMensal, -numPrestacoes));
     const prestacaoFormatada = formatarMoeda(prestacao);
   
