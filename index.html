@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Habitacional</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Simulação Habitacional</h1>
+        <form id="calculator-form"> 
+            <label for="valorImovel">Valor Inicial do Imóvel:</label>
+            <input type="text" id="valorImovel" required>
+
+            <div class="entrada-tipo">
+                <span>Tipo de Entrada:</span>
+                <label>
+                    <input type="radio" id="entradaValor" name="entradaTipo" value="valor" checked>
+                    Valor Fixo
+                </label>
+                <label>
+                    <input type="radio" id="entradaPorcentagem" name="entradaTipo" value="porcentagem">
+                    Porcentagem
+                </label>
+            </div>
+
+            <div id="entradaInputs">
+                <label for="valorEntrada">Valor da Entrada:</label>
+                <input type="text" id="valorEntrada" required>
+
+                <label for="percentualEntrada" style="display:none;">Percentual da Entrada:</label>
+                <input type="number" id="percentualEntrada" step="0.01" min="0" max="100" style="display:none;">
+            </div>
+
+            <label for="valorFinanciado">Valor Financiado:</label>
+            <input type="text" id="valorFinanciado" readonly>
+
+            <label for="taxaJuros">Taxa de Juros Mensal (%):</label>
+            <input type="number" id="taxaJuros" step="0.01" required>
+
+            <label for="numPrestacoes">Número de Prestações:</label>
+            <input type="number" id="numPrestacoes" required>
+
+            <div class="button-container">
+                <button type="button" id="calcular" onclick="calcularPrestacao()">Calcular Prestação</button>
+                <button type="reset" id="reset" onclick="resetarCampos()">Resetar</button>
+            </div>
+        </form>
+
+        <div id="resultado">
+            <p id="prestacao">Valor da Prestação:<br> R$ 0,00</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
