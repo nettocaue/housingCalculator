@@ -28,10 +28,13 @@
             <div id="entradaInputs">
                 <label for="valorEntrada">Valor da Entrada:</label>
                 <input type="text" id="valorEntrada" required>
-
+            
                 <label for="percentualEntrada" style="display:none;">Percentual da Entrada:</label>
                 <input type="number" id="percentualEntrada" step="0.01" min="0" max="100" style="display:none;">
+            
+                <p id="valorEntradaReais" style="display:none;">Valor da Entrada em Reais: R$ 0,00</p> <!-- Novo elemento -->
             </div>
+            
 
             <label for="valorFinanciado">Valor Financiado:</label>
             <input type="text" id="valorFinanciado" readonly>

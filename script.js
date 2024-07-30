@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const numPrestacoesInput = document.getElementById('numPrestacoes');
     const entradaValorRadio = document.getElementById('entradaValor');
     const entradaPorcentagemRadio = document.getElementById('entradaPorcentagem');
+    const valorEntradaReais = document.getElementById('valorEntradaReais');
   
     function formatarMoeda(valor) {
         return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (entradaPorcentagemRadio.checked) {
             const percentual = parseFloat(percentualEntradaInput.value) / 100;
             valorEntrada = valorImovel * percentual;
+            valorEntradaReais.textContent = `Valor da Entrada em Reais: ${formatarMoeda(valorEntrada)}`; // Atualiza o valor da entrada em reais
         }
   
         const valorFinanciado = valorImovel - valorEntrada;
@@ -51,12 +53,14 @@ document.addEventListener('DOMContentLoaded', function() {
     entradaValorRadio.addEventListener('change', function() {
         document.getElementById('valorEntrada').style.display = 'block';
         document.getElementById('percentualEntrada').style.display = 'none';
+        valorEntradaReais.style.display = 'none'; // Esconde o valor da entrada em reais
         atualizarValorFinanciado();
     });
   
     entradaPorcentagemRadio.addEventListener('change', function() {
         document.getElementById('valorEntrada').style.display = 'none';
         document.getElementById('percentualEntrada').style.display = 'block';
+        valorEntradaReais.style.display = 'block'; // Mostra o valor da entrada em reais
         atualizarValorFinanciado();
     });
   
@@ -79,11 +83,12 @@ document.addEventListener('DOMContentLoaded', function() {
         valorFinanciadoInput.value = '';
         taxaJurosInput.value = '';
         numPrestacoesInput.value = '';
+        valorEntradaReais.textContent = 'Valor da Entrada em Reais: R$ 0,00'; // Reseta o valor da entrada em reais
         document.getElementById('prestacao').innerText = 'Valor da Prestação:\n R$ 0,00';
     });
-  });
+});
   
-  function calcularPrestacao() {
+function calcularPrestacao() {
     const valorFinanciado = removerFormatacao(document.getElementById('valorFinanciado').value);
     const taxaJuros = parseFloat(document.getElementById('taxaJuros').value) / 100;
     const numPrestacoes = parseInt(document.getElementById('numPrestacoes').value);
@@ -98,13 +103,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const prestacaoFormatada = formatarMoeda(prestacao);
   
     document.getElementById('prestacao').innerText = `Valor da Prestação: ${prestacaoFormatada}`;
-  }
+}
   
-  function formatarMoeda(valor) {
+function formatarMoeda(valor) {
     return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  }
+}
   
-  function removerFormatacao(valor) {
+function removerFormatacao(valor) {
     return parseFloat(valor.replace('R$', '').replace('.', '').replace(',', '.')) || 0;
-  }
+}
+
   
